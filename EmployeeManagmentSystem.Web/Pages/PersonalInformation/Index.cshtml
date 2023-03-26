@@ -1,0 +1,52 @@
+﻿@page "/PersonalInformations"
+@model IndexModel
+@{
+    ViewBag.Title = "Personal informations";
+}
+
+<div class="col-12">
+    @if (TempData["Success"] is not null)
+    {
+        <div class="alert alert-success bg-success text-light border-0 alert-dismissible fade show" role="alert">
+            <p><i class="bi bi-check-circle"></i> a new personal information with full name: "@TempData["Success"]" created successfully.</p>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
+    <a class="btn btn-success" asp-page="/PersonalInformation/Create"> Add new personal information
+        <i class="bi bi-plus-circle"></i>
+    </a>
+    <br />
+    <table class="table table-bordered border-primary">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Full name</th>
+                <th>Phone number</th>
+                <th>Email</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Data)
+            {
+                <tr>
+                    <td>@item.Id</td>
+                    <td>@item.FullName</td>
+                    <td>@item.PhoneNumber</td>
+                    <td>@item.Email</td>
+                    <td>
+                        <a class="btn btn-danger btn-sm" title="Delete @item.FullName" asp-page="/PersonalInformation/Delete" asp-route-id="@item.Id">
+                            <i class="bi bi-trash"></i>
+                        </a>
+                        <a class="btn btn-sm btn-info" title="Detail @item.FullName" asp-page="/PersonalInformation/Detail" asp-route-id="@item.Id">
+                            <i class="bi bi-file-earmark-person"></i>
+                        </a>
+                        <a class="btn btn-sm btn-primary" title="Update @item.FullName" asp-page="/PersonalInformation/Update" asp-route-id="@item.Id">
+                            <i class="bi bi-pencil-square"></i>
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

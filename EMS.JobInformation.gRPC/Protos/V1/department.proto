@@ -1,0 +1,57 @@
+syntax = "proto3";
+
+package EMS.JobInformation.Departments.V1;
+
+option csharp_namespace = "EMS.JobInformation.gRPC.Protos.V1";
+
+import "google/protobuf/timestamp.proto";
+
+service DepartmentService
+{
+	rpc GetAll(EmptyMessage) returns (stream DepartmentReply) {}
+	rpc Get(DepartmentIdRequest) returns (DepartmentReply) {}
+	rpc Create (stream CreateDepartmentRequest) returns (stream CreateDepartmentReply) {}
+	rpc Update (UpdateDepartmentRequest) returns (EmptyMessage);
+	rpc Delete (DepartmentIdRequest) returns (EmptyMessage);
+}
+
+message EmptyMessage
+{
+
+}
+
+message DepartmentReply
+{
+	int32 Id = 1;
+	string Name = 2;
+	string Description = 3;
+	int32 ManagerId = 4;
+	google.protobuf.Timestamp CreateDate = 5;
+	google.protobuf.Timestamp UpdateDate = 6;
+}
+
+message DepartmentIdRequest
+{
+	int32 Id = 1;
+}
+
+message CreateDepartmentRequest
+{
+	string Name = 1;
+	string Description = 2;
+	int32 ManagerId = 3;
+}
+
+message CreateDepartmentReply
+{
+	int32 Id = 1;
+	string Name = 2;
+}
+
+message UpdateDepartmentRequest
+{
+	int32 Id = 1;
+	string Name = 2;
+	string Description = 3;
+	int32 ManagerId = 4;
+}

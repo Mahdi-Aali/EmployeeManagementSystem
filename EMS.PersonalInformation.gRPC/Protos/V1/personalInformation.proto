@@ -1,0 +1,76 @@
+syntax = "proto3";
+
+package EMS.PI.V1;
+
+option csharp_namespace = "EMS.PersonalInformation.gRPC.Protos.V1";
+
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/wrappers.proto";
+
+service PersonalInformationService
+{
+	rpc GetAll(EmptyMessage) returns (stream PersonalInformationReply) {}
+	rpc Get(PersonalInformationIdRequest) returns (PersonalInformationReply) {}
+	rpc Create(stream PersonalInformationCreateRequest) returns (stream PersonalInformationCreateReply);
+	rpc Delete(PersonalInformationIdRequest) returns (EmptyMessage) {}
+	rpc Update(PersonalInformationUpdateRequest) returns (EmptyMessage) {}
+		
+}
+
+message EmptyMessage
+{
+
+}
+
+message PersonalInformationReply
+{
+	int32 Id = 1;
+	string FullName = 2;
+	string Address = 3;
+	string PostalCode = 4;
+	string HomeNumber = 5;
+	string PhoneNumber = 6;
+	string Email = 7;
+	string SocialSecurityNumber = 8;
+	google.protobuf.Timestamp CreateDate = 9;
+	google.protobuf.Timestamp UpdateDate = 10;
+	string ImageUrl = 11;
+}
+
+message PersonalInformationIdRequest
+{
+	int32 Id = 1;
+}
+
+message PersonalInformationCreateRequest
+{
+	string FullName = 1;
+	string Address = 2;
+	string PostalCode = 3;
+	string HomeNumber = 4;
+	string PhoneNumber = 5;
+	string Email = 6;
+	string SocialSecurityNumber = 7;
+	bytes Image = 8;
+	string ImageType = 9;
+}
+
+message PersonalInformationCreateReply
+{
+	int32 Id = 1;
+	string FullName = 2;
+}
+
+message PersonalInformationUpdateRequest
+{
+	int32 Id = 1;
+	string FullName = 2;
+	string Address = 3;
+	string PostalCode = 4;
+	string HomeNumber = 5;
+	string PhoneNumber = 6;
+	string Email = 7;
+	string SocialSecurityNumber = 8;
+	bytes Image = 9;
+	string ImageType = 10;
+}

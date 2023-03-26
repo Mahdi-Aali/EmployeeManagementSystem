@@ -1,0 +1,11 @@
+﻿global using Grpc.Net.Compression;
+global using System.IO.Compression;
+global using EmployeeManagement.DAL.Repository;
+global using EmployeeManagementService.Domain.Repository;
+global using EmployeeManagementService.Domain.Services;
+global using EmployeeManagementSystem.BLL.Services;
+global using EmployeeManagementSystem.Web.Compression;
+global using static EMS.PersonalInformation.gRPC.Protos.V1.PersonalInformationService;
+global using Microsoft.AspNetCore.Mvc;
+global using EmployeeManagementService.Domain.Models;
+global using Microsoft.AspNetCore.Mvc.RazorPages;

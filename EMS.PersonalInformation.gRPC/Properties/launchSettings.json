@@ -1,0 +1,13 @@
+﻿{
+  "profiles": {
+    "EMS.PersonalInformation.gRPC": {
+      "commandName": "Project",
+      "dotnetRunMessages": true,
+      "launchBrowser": false,
+      "applicationUrl": "http://localhost:5163;https://localhost:7227",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      }
+    }
+  }
+}

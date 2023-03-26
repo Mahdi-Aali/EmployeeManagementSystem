@@ -1,0 +1,17 @@
+﻿global using EMS.JobInformation.gRPC.Services;
+global using EMS.JobInformation.DAL.Database;
+global using Microsoft.AspNetCore.Mvc;
+global using Microsoft.EntityFrameworkCore;
+global using EMS.JobInformation.gRPC.RouteConfiguration;
+global using BLL = EMS.JobInformation.BLL.Services;
+global using EMS.JobInformation.DAL.Repositories.DepartmentRepositories;
+global using EMS.JobInformation.Domain.Repositories.DepartmetnRepository;
+global using EMS.JobInformation.Domain.Services.DepartmentService;
+global using EMS.JobInformation.gRPC.Protos.V1;
+global using Grpc.Core;
+global using EMS.JobInformation.Domain.Models.DepartmentModels;
+global using EMS.JobInformation.gRPC.Mappers;
+global using EMS.JobInformation.gRPC.Compression;
+global using Grpc.Net.Compression;
+global using System.IO.Compression;
+global using Services = EMS.JobInformation.gRPC.Services;

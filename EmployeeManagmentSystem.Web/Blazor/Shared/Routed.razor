@@ -1,0 +1,11 @@
+﻿<Router AppAssembly="typeof(Program).Assembly">
+    <Found>
+        <RouteView DefaultLayout="typeof(EMSLayout)" RouteData="@context"></RouteView>
+    </Found>
+    <NotFound>
+        <div class="alert alert-danger">
+            404 Not Found!
+        </div>
+        <a class="btn btn-link" href="/">Back to home</a>
+    </NotFound>
+</Router>

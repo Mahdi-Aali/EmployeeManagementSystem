@@ -1,0 +1,82 @@
+﻿@page "/Create-Personal-Information"
+@model EmployeeManagementSystem.Web.Pages.PersonalInformation.CreateModel
+@{
+    ViewBag.Title = "Create new personal information";
+}
+
+<div class="col-12">
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">@ViewBag.Title</h5>
+
+            <form class="row g-3" asp-page="/PersonalInformation/Create" method="post" enctype="multipart/form-data">
+                @Html.AntiForgeryToken()
+                <div class="col-md-12">
+                    <div class="form-floating">
+                        <input asp-for="Model.FullName" class="form-control" placeholder="Full name">
+                        <label>Full name</label>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-floating">
+                        <input asp-for="Model.Email" class="form-control" placeholder="Your email">
+                        <label>Your email</label>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-floating">
+                        <input asp-for="Model.PostalCode" class="form-control" placeholder="Postal code">
+                        <label>postal code</label>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="form-floating">
+                        <textarea asp-for="Model.Address" class="form-control" placeholder="Address" style="height: 100px;"></textarea>
+                        <label>Address</label>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-floating">
+                        <input asp-for="Model.HomeNumber" class="form-control" placeholder="Home number">
+                        <label>Home number</label>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-floating">
+                        <input asp-for="Model.PhoneNumber" class="form-control" placeholder="Phone number">
+                        <label>Phone number</label>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="form-floating">
+                        <input asp-for="Model.SocialSecurityNumber" class="form-control" placeholder="Social security number">
+                        <label>Social security number</label>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <input class="form-control" type="file" name="personImage" id="formFile" accept="Image/png,Image/jpeg">
+                </div>
+                <div class="col-md-6">
+                    <img src="/assets/img/profile-img.jpg" width="150" height="150" class="img-thumbnail" id="previewImage" />
+                </div>
+                <div class="text-danger" asp-validation-summary="All"></div>
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="reset" class="btn btn-secondary">Reset</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+@section script
+    {
+    <partial name="_ValidationPartial"></partial>
+    <script>
+        $('#formFile').change(function () {
+            var url = window.URL.createObjectURL(this.files[0]);
+            $("#previewImage").slideUp("slow");
+            $('#previewImage').attr('src', url);
+            $("#previewImage").slideDown("slow");
+        });
+    </script>
+}

@@ -1,0 +1,57 @@
+﻿@page "/PersonalInformationDetail/{id:int}"
+@inject IConfiguration configuration
+@model EmployeeManagementSystem.Web.Pages.PersonalInformation.DetailModel
+@{
+    ViewBag.Title = $"Details of {Model.PersonalInformation.FullName}";
+}
+<div class="col-12">
+    <div class="card">
+        <div class="card-body pt3">
+            <h5 class="card-title">Details of @Model.PersonalInformation.FullName</h5>
+            <div class="row">
+                <div class="col-lg-3 col-md-4 label">Profile Picture</div>
+                <div class="col-lg-9 col-md-8">
+                    <img src="@(configuration.GetSection("PersonalInformationServiceUri").Value.ToString() + "/Images/" + Model.PersonalInformation.ImageUrl)"
+                    class="img-thumbnail" width="150" height="150" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-3 col-md-4 label ">Full Name</div>
+                <div class="col-lg-9 col-md-8">@Model.PersonalInformation.FullName</div>
+            </div>
+            <div class="row">
+                <div class="col-lg-3 col-md-4 label ">Email</div>
+                <div class="col-lg-9 col-md-8">@Model.PersonalInformation.Email</div>
+            </div>
+            <div class="row">
+                <div class="col-lg-3 col-md-4 label ">Home number</div>
+                <div class="col-lg-9 col-md-8">@Model.PersonalInformation.HomeNumber</div>
+            </div>
+            <div class="row">
+                <div class="col-lg-3 col-md-4 label ">Phone number</div>
+                <div class="col-lg-9 col-md-8">@Model.PersonalInformation.PhoneNumber</div>
+            </div>
+            <div class="row">
+                <div class="col-lg-3 col-md-4 label ">Postal code</div>
+                <div class="col-lg-9 col-md-8">@Model.PersonalInformation.PostalCode</div>
+            </div>
+            <div class="row">
+                <div class="col-lg-3 col-md-4 label ">Address</div>
+                <div class="col-lg-9 col-md-8">@Model.PersonalInformation.Address</div>
+            </div>
+            <div class="row">
+                <div class="col-lg-3 col-md-4 label ">Create date</div>
+                <div class="col-lg-9 col-md-8">@Model.PersonalInformation.CreateDate.ToShortDateString()</div>
+            </div>
+            <div class="row">
+                <div class="col-lg-3 col-md-4 label ">Update date</div>
+                <div class="col-lg-9 col-md-8">
+                    @(Model.PersonalInformation.UpdateDate.Value.Equals(DateTime.MinValue) ? "Not updated yet!" : Model.PersonalInformation.UpdateDate?.ToShortDateString())
+                </div>
+            </div>
+        </div>
+        <a asp-page="/PersonalInformation/Index" class="btn btn-outline-info">
+            Back
+        </a>
+    </div>
+</div>
