@@ -37,7 +37,7 @@ public class CreateModel : PageModel
             Model.Image = ms.ToArray();
             Model.ImageType = Path.GetExtension(personImage.FileName).Replace(".", "").ToString();
         }
-        if (ImageValidator.IsValid(Model.ImageType))
+        if (!ImageValidator.IsValid(Model.ImageType))
         {
             ModelState.AddModelError("All", "Image format is not valid!");
         }
