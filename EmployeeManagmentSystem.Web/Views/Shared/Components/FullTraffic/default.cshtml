@@ -1,0 +1,25 @@
+﻿@using EmployeeManagementService.Domain.Models.TrafficRecorderModels;
+
+<div id="lineChart" style="width:90%;height:450px">
+</div>
+<script>
+
+    document.addEventListener("DOMContentLoaded", () => {
+        echarts.init(document.querySelector("#lineChart")).setOption({
+            xAxis: {
+                type: 'category',
+                data: [@Html.Raw(ViewBag.Dates)]
+            },
+            yAxis: {
+                type: 'value'
+            },
+            series: [
+                {
+                    data: [@Html.Raw(ViewBag.Counts)],
+                    type: 'line'
+                }
+            ]
+        });
+    });
+
+</script>

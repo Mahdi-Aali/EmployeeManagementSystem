@@ -1,0 +1,41 @@
+syntax = "proto3";
+
+package EMS.TrafficRecorder.V1;
+
+option csharp_namespace = "EMS.TrafficRecordService.gRPC.Protos.V1";
+
+import "google/protobuf/timestamp.proto";
+
+service TrafficService
+{
+	rpc GetAll(EmptyMessage) returns (stream GetAllReply) {}
+	rpc GetSpecifyDayTraffic(GetSpecifyDayTrafficRequest) returns (stream GetSpecifyDayReply) {}
+	rpc Create(CreateTrafficRequest) returns (EmptyMessage) {}
+}
+
+message EmptyMessage
+{
+
+}
+
+message GetAllReply
+{
+	google.protobuf.Timestamp date = 1;
+	int32 Count = 2;
+}
+
+message GetSpecifyDayTrafficRequest
+{
+	google.protobuf.Timestamp date = 1;
+}
+
+message GetSpecifyDayReply
+{
+	google.protobuf.Timestamp date = 1;
+	int32 Count = 2;
+}
+
+message CreateTrafficRequest
+{
+	google.protobuf.Timestamp date = 1;
+}

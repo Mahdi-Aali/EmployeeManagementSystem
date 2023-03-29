@@ -26,6 +26,9 @@
     <Protobuf Include="Protos\personalInformation.proto" GrpcServices="Client">
       <SourceUri>https://localhost:7227/protos/V1/personalInformation.proto</SourceUri>
     </Protobuf>
+    <Protobuf Include="Protos\traffic.proto" GrpcServices="Client">
+      <SourceUri>https://localhost:7125/Protos/V1/traffic.proto</SourceUri>
+    </Protobuf>
   </ItemGroup>
 
 </Project>

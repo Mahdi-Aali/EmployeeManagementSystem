@@ -1,0 +1,13 @@
+﻿global using EMS.TrafficRecordService.DAL.Database;
+global using Microsoft.EntityFrameworkCore;
+global using EMS.TrafficRecordService.Domain.Services;
+global using EMS.TrafficRecordService.gRPC.Protos.V1;
+global using Google.Protobuf.WellKnownTypes;
+global using Grpc.Core;
+global using EMS.TrafficRecordService.BLL.Services;
+global using EMS.TrafficRecordService.DAL.Repository;
+global using EMS.TrafficRecordService.Domain.Repository;
+global using EMS.TrafficRecordService.gRPC.Services;
+global using Microsoft.AspNetCore.Mvc;
+global using Grpc.Net.Compression;
+global using System.IO.Compression;

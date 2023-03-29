@@ -1,4 +1,6 @@
+using EmployeeManagementSystem.Web.Middlewares;
 using static EMS.JobInformation.gRPC.Protos.V1.DepartmentService;
+using static EMS.TrafficRecordService.gRPC.Protos.V1.TrafficService;
 
 var builder = WebApplication.CreateBuilder(args);
 var services = builder.Services;
@@ -32,9 +34,22 @@ services.AddGrpcClient<DepartmentServiceClient>(opt =>
     };
 });
 
+services.AddGrpcClient<TrafficServiceClient>(opt =>
+{
+    opt.Address = new Uri(configuration.GetSection("TrafficRecorderServiceUri").Value.ToString());
+}).ConfigureChannel(options =>
+{
+    options.CompressionProviders = new List<ICompressionProvider>()
+    {
+        new BrotliCompressionProvider(CompressionLevel.Optimal)
+    };
+});
+
 
 services.AddScoped<IPersonalInformationService, PersonalInformationService>();
 services.AddScoped<IPersonalInformationRepository, PersonalInformationRepository>();
+services.AddScoped<ITrafficRecorderRepository, EfTrafficRecorderRepository>();
+services.AddScoped<ITrafficRecordService, TrafficRecordService>();
 
 var app = builder.Build();
 
@@ -50,6 +65,8 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
+
+app.UseMiddleware<AddTrafficMiddleware>();
 
 app.MapRazorPages();
 app.MapDefaultControllerRoute();

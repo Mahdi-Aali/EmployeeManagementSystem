@@ -51,7 +51,7 @@ public class PersonalInformationRepository : IPersonalInformationRepository
 
     public async IAsyncEnumerable<PersonalInformationModel> GetAllAsync()
     {
-        using (var serverStream = _client.GetAll(new EmptyMessage()))
+        using (var serverStream = _client.GetAll(new EMS.PersonalInformation.gRPC.Protos.V1.EmptyMessage()))
         {
             while(await serverStream.ResponseStream.MoveNext(default))
             {
